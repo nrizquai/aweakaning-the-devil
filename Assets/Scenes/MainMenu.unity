@@ -288,6 +288,7 @@ MonoBehaviour:
   mainMenu: {fileID: 584204802}
   returnButton: {fileID: 116768756}
   startButton: {fileID: 1159671510}
+  eventSystem: {fileID: 1331076573}
 --- !u!4 &12147805
 Transform:
   m_ObjectHideFlags: 0
