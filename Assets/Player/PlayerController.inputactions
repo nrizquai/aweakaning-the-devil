@@ -1,0 +1,131 @@
+{
+    "name": "PlayerController",
+    "maps": [
+        {
+            "name": "movement",
+            "id": "af85568d-4915-4a50-89af-f266e925882e",
+            "actions": [
+                {
+                    "name": "LeftStickLR",
+                    "type": "Value",
+                    "id": "bb2c4791-8e93-44a2-b2df-07dadf1fc9ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftStickDU",
+                    "type": "Button",
+                    "id": "bc981254-7c8d-4373-8cee-d164e9de2e20",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "MoveLR",
+                    "id": "39c6419e-6d4c-4655-8f17-518748294c85",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1ffdadff-3f96-4246-969d-403be88b8134",
+                    "path": "<XInputController>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c4a535b3-5d21-479d-b874-c644962761bd",
+                    "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "clav",
+                    "id": "9ee38522-f818-43b8-9c8a-adaeade1f05d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b90174e4-a489-4f82-892e-81e973e4f1c8",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "6c6be7cd-52bf-427e-bbea-a67f3c94e295",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickLR",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "MoveDU",
+                    "id": "793d786a-acb4-4c5a-a581-a82524a1b0b7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e68f0c50-6b64-4661-aa17-9f7a87df44c2",
+                    "path": "<XInputController>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "efb976ef-74bc-424f-9407-9e54d09f3097",
+                    "path": "<XInputController>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
