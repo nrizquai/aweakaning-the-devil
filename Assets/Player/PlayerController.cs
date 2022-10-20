@@ -153,68 +153,88 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
             ""id"": ""11fc1471-d458-45ee-995f-03ec8918e789"",
             ""actions"": [
                 {
-                    ""name"": ""Navigate"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""NavigateH"",
+                    ""type"": ""Value"",
                     ""id"": ""ed6723ef-7de3-4e65-98eb-f1a192218c75"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""NavigateV"",
+                    ""type"": ""Value"",
+                    ""id"": ""0924ce7a-ff68-4df0-89fa-75e1e12efcaa"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Joystick"",
-                    ""id"": ""e5d845cf-7a5c-451a-aff5-9d7805241504"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""Left/Right"",
+                    ""id"": ""1d4a2199-ce76-4197-be05-a0e3ef0eaec9"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateH"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""b5197ffc-93b5-491b-a750-3f9efcf75447"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""name"": ""negative"",
+                    ""id"": ""914e3d0c-1d7c-4884-8929-76357cc31297"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateH"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""04e5baef-b1e3-4165-829d-a6448c633865"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""name"": ""positive"",
+                    ""id"": ""c8a46e9b-cef8-4584-a51d-3c4d4718d2cc"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateH"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""c2210384-2d11-4988-9b70-98bdc2226ef9"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""name"": ""Up/Down"",
+                    ""id"": ""e8232a8f-1daa-4d31-8fdd-363fa2531e1f"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateV"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b7505d8c-1c51-43eb-9c29-66a89b3275bf"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateV"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""3417f858-87dc-4706-96c0-b1b80218c428"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""name"": ""positive"",
+                    ""id"": ""dfe38720-22a1-4f60-8507-e8aa9ff52da7"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateV"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -229,7 +249,8 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_movement_LeftStickDU = m_movement.FindAction("LeftStickDU", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        m_UI_NavigateH = m_UI.FindAction("NavigateH", throwIfNotFound: true);
+        m_UI_NavigateV = m_UI.FindAction("NavigateV", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -330,12 +351,14 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Navigate;
+    private readonly InputAction m_UI_NavigateH;
+    private readonly InputAction m_UI_NavigateV;
     public struct UIActions
     {
         private @PlayerController m_Wrapper;
         public UIActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+        public InputAction @NavigateH => m_Wrapper.m_UI_NavigateH;
+        public InputAction @NavigateV => m_Wrapper.m_UI_NavigateV;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,16 +368,22 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
-                @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
-                @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
+                @NavigateH.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateH;
+                @NavigateH.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateH;
+                @NavigateH.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateH;
+                @NavigateV.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateV;
+                @NavigateV.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateV;
+                @NavigateV.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateV;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Navigate.started += instance.OnNavigate;
-                @Navigate.performed += instance.OnNavigate;
-                @Navigate.canceled += instance.OnNavigate;
+                @NavigateH.started += instance.OnNavigateH;
+                @NavigateH.performed += instance.OnNavigateH;
+                @NavigateH.canceled += instance.OnNavigateH;
+                @NavigateV.started += instance.OnNavigateV;
+                @NavigateV.performed += instance.OnNavigateV;
+                @NavigateV.canceled += instance.OnNavigateV;
             }
         }
     }
@@ -366,6 +395,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnNavigate(InputAction.CallbackContext context);
+        void OnNavigateH(InputAction.CallbackContext context);
+        void OnNavigateV(InputAction.CallbackContext context);
     }
 }
