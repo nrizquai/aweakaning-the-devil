@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject returnButton;
     public GameObject startButton;
+    public GameObject eventSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +33,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
-        returnButton.SetActive(true);
         mainMenu.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(returnButton);
+        eventSystem.SetActive(false);
+        SceneManager.LoadScene(1);
     }
 
     public void Tutorial()
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         returnButton.SetActive(false);
         mainMenu.SetActive(true);
+        eventSystem.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
