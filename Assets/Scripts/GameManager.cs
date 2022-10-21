@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject returnButton;
     public GameObject startButton;
     public GameObject eventSystem;
+
+    public int indexA;
+    public int indexB;
+    public int indexX;
+    public int indexY;
     // Start is called before the first frame update
     void Start()
     {

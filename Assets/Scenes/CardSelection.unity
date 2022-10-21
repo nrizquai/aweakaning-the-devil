@@ -2504,6 +2504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d99228bcf798ed438d499533403ab73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
   timer: 0
   cardSlot: []
   firstLine:
@@ -2518,6 +2520,11 @@ MonoBehaviour:
   - {fileID: 64061303}
   - {fileID: 645464034}
   - {fileID: 1850110707}
+  buttonSelected:
+  - {fileID: 6423784871416941979, guid: acb2ab0a7b5945040b6c72fcd6a01533, type: 3}
+  - {fileID: 3968893095456074986, guid: 09d4bf81f7e9e2b4499ae3514bde8564, type: 3}
+  - {fileID: 4784075894596452432, guid: e2346806296ec2c49a05327d541083fb, type: 3}
+  - {fileID: 3017226466252076975, guid: 8526a2f4cfaa3e34685c96b6c5dd1770, type: 3}
 --- !u!1 &1168740293
 GameObject:
   m_ObjectHideFlags: 0
