@@ -44,6 +44,42 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""A"",
+                    ""type"": ""Button"",
+                    ""id"": ""d5e795dd-9edf-43f1-8e30-aa4083b4f64d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""B"",
+                    ""type"": ""Button"",
+                    ""id"": ""b22473a9-e7df-459d-96f2-4c8285bedd7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""X"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f0f4134-fd0f-4048-8b0a-817213445c94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Y"",
+                    ""type"": ""Button"",
+                    ""id"": ""f844a3e0-2e5f-4d4f-8a30-9f0ef7d4747d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -178,6 +214,50 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""action"": ""LeftStickDU"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""483f3250-25c8-491c-a5cf-f9002d424ab0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4177a809-db7f-4c21-b1bc-656542f232c7"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""613e27c8-ac9f-4ef3-ad1e-32521de6aadd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f72d0f6-d1c1-4fec-877b-c4d8f46350df"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -360,6 +440,10 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_movement = asset.FindActionMap("movement", throwIfNotFound: true);
         m_movement_LeftStickLR = m_movement.FindAction("LeftStickLR", throwIfNotFound: true);
         m_movement_LeftStickDU = m_movement.FindAction("LeftStickDU", throwIfNotFound: true);
+        m_movement_A = m_movement.FindAction("A", throwIfNotFound: true);
+        m_movement_B = m_movement.FindAction("B", throwIfNotFound: true);
+        m_movement_X = m_movement.FindAction("X", throwIfNotFound: true);
+        m_movement_Y = m_movement.FindAction("Y", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NavigateH = m_UI.FindAction("NavigateH", throwIfNotFound: true);
@@ -429,12 +513,20 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_movement_LeftStickLR;
     private readonly InputAction m_movement_LeftStickDU;
+    private readonly InputAction m_movement_A;
+    private readonly InputAction m_movement_B;
+    private readonly InputAction m_movement_X;
+    private readonly InputAction m_movement_Y;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
         public MovementActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @LeftStickLR => m_Wrapper.m_movement_LeftStickLR;
         public InputAction @LeftStickDU => m_Wrapper.m_movement_LeftStickDU;
+        public InputAction @A => m_Wrapper.m_movement_A;
+        public InputAction @B => m_Wrapper.m_movement_B;
+        public InputAction @X => m_Wrapper.m_movement_X;
+        public InputAction @Y => m_Wrapper.m_movement_Y;
         public InputActionMap Get() { return m_Wrapper.m_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -450,6 +542,18 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @LeftStickDU.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftStickDU;
                 @LeftStickDU.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftStickDU;
                 @LeftStickDU.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftStickDU;
+                @A.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnA;
+                @A.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnA;
+                @A.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnA;
+                @B.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnB;
+                @B.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnB;
+                @B.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnB;
+                @X.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnX;
+                @X.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnX;
+                @X.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnX;
+                @Y.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
+                @Y.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
+                @Y.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -460,6 +564,18 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @LeftStickDU.started += instance.OnLeftStickDU;
                 @LeftStickDU.performed += instance.OnLeftStickDU;
                 @LeftStickDU.canceled += instance.OnLeftStickDU;
+                @A.started += instance.OnA;
+                @A.performed += instance.OnA;
+                @A.canceled += instance.OnA;
+                @B.started += instance.OnB;
+                @B.performed += instance.OnB;
+                @B.canceled += instance.OnB;
+                @X.started += instance.OnX;
+                @X.performed += instance.OnX;
+                @X.canceled += instance.OnX;
+                @Y.started += instance.OnY;
+                @Y.performed += instance.OnY;
+                @Y.canceled += instance.OnY;
             }
         }
     }
@@ -541,6 +657,10 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     {
         void OnLeftStickLR(InputAction.CallbackContext context);
         void OnLeftStickDU(InputAction.CallbackContext context);
+        void OnA(InputAction.CallbackContext context);
+        void OnB(InputAction.CallbackContext context);
+        void OnX(InputAction.CallbackContext context);
+        void OnY(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
