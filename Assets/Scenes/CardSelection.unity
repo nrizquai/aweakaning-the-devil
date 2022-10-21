@@ -2506,7 +2506,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  timer: 0
   cardSlot: []
   firstLine:
   - {fileID: 697880705}

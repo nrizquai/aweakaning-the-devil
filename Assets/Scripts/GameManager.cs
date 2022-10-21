@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject returnButton;
     public GameObject startButton;
+    public GameObject startButtonSelect;
     public GameObject eventSystem;
 
-    public int indexA;
-    public int indexB;
-    public int indexX;
-    public int indexY;
+    public int indexA = -1;
+    public int indexB = -1;
+    public int indexX = -1;
+    public int indexY = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         mainMenu.SetActive(false);
-        eventSystem.SetActive(false);
+        returnButton.SetActive(true);
+        startButtonSelect.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene(1);
     }
 
@@ -65,8 +68,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         returnButton.SetActive(false);
+        startButtonSelect.SetActive(false);
         mainMenu.SetActive(true);
         eventSystem.SetActive(true);
+        ResetIndexCard();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
@@ -74,5 +79,32 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ActivateUI()
+    {
+        EventSystem.current.SetSelectedGameObject(returnButton);
+    }
+    public void DesactivateUI()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void MainGameSwitch()
+    {
+        if(indexA > -1 && indexB > -1 && indexX > -1 && indexY > -1)
+        {
+            SceneManager.LoadScene(2);
+            returnButton.SetActive(false);
+            startButtonSelect.SetActive(false);
+        }
+    }
+
+    public void ResetIndexCard()
+    {
+        indexA = -1;
+        indexB = -1;
+        indexX = -1;
+        indexY = -1;
     }
 }
