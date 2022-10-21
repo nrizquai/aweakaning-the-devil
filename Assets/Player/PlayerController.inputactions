@@ -123,6 +123,39 @@
                     "action": "LeftStickDU",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "clav",
+                    "id": "dc1c0eb2-c526-4ec1-9b37-d9b10f3121e3",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "5bbb2c44-fb87-4b2a-8318-753c8b9b35ed",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f8f8e4e6-de4a-4e5e-a483-4fd895e04509",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickDU",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
