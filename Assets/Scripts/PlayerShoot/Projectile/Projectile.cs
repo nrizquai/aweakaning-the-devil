@@ -30,6 +30,20 @@ public class Projectile : MonoBehaviour
         return card.speed;
     }
 
+    public float GetTimerMax()
+    {
+        return card.atkSpeed;
+    }
+
+    public float GetCooldown()
+    {
+        return card.cooldown;
+    }
+    public int GetAmmo()
+    {
+        return card.ammo;
+    }
+
     public void Destroy()
     {
         Destroy(gameObject);

@@ -749,6 +749,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectils:
   - {fileID: 6258389586897542491, guid: e2dacc5e462a4de4d970a297b073656b, type: 3}
+  - {fileID: 7604517257388165591, guid: 91c985498661b5943817fbab398418a5, type: 3}
+  - {fileID: 9178066146064392119, guid: 04f2884492408d54ba79fd780784ac07, type: 3}
+  - {fileID: 4392781376966545052, guid: dea7908a3d7bae346bb10a66b5623e71, type: 3}
+  timer:
+  - 0
+  - 0
+  - 0
+  - 0
+  timerMax:
+  - 0
+  - 0
+  - 0
+  - 0
+  CD:
+  - 0
+  - 0
+  - 0
+  - 0
+  cdMax:
+  - 0
+  - 0
+  - 0
+  - 0
+  ammo: 00000000000000000000000000000000
+  ammoMax: 00000000000000000000000000000000
+  reloading: 00000000
 --- !u!50 &1663377572
 Rigidbody2D:
   serializedVersion: 4
@@ -801,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1755889448
 Rigidbody2D:
   serializedVersion: 4

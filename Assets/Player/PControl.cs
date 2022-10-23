@@ -14,6 +14,7 @@ public class PControl : MonoBehaviour
     GameObject shootOrigine;
 
     Vector3 shootdirection;
+    float shootRotation;
     void Awake()
     {
         inputs = new PlayerController();
@@ -62,6 +63,7 @@ public class PControl : MonoBehaviour
             pos.x = velocity;
             shootOrigine.transform.position = Vector3.right + transform.position;
             shootdirection = Vector3.right;
+            shootRotation = -90;
             animWalk.SetFloat("moveX", 1);
             animWalk.SetFloat("moveY", 0);
         }
@@ -70,6 +72,7 @@ public class PControl : MonoBehaviour
             pos.x = -velocity;
             shootOrigine.transform.position = Vector3.right * (-1) + transform.position;
             shootdirection = Vector3.right * (-1);
+            shootRotation = 90;
             animWalk.SetFloat("moveX", -1);
             animWalk.SetFloat("moveY", 0);
         }
@@ -78,6 +81,7 @@ public class PControl : MonoBehaviour
             pos.y = velocity;
             shootOrigine.transform.position = Vector3.up + transform.position;
             shootdirection = Vector3.up;
+            shootRotation = 0;
             animWalk.SetFloat("moveX", 0); 
             animWalk.SetFloat("moveY", 1);
         }
@@ -86,6 +90,7 @@ public class PControl : MonoBehaviour
             pos.y = -velocity;
             shootOrigine.transform.position = Vector3.up * (-1) + transform.position;
             shootdirection = Vector3.up * (-1);
+            shootRotation = 180;
             animWalk.SetFloat("moveX", 0); 
             animWalk.SetFloat("moveY", -1);
         }
@@ -98,5 +103,10 @@ public class PControl : MonoBehaviour
     public Vector3 GetDirectionShoot()
     {
         return shootdirection;
+    }
+
+    public float GetShootRotation()
+    {
+        return shootRotation;
     }
 }
