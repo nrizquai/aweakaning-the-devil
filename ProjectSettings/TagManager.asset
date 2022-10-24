@@ -9,6 +9,10 @@ TagManager:
   - X
   - Y
   - OrigineShoot
+  - EnemyC
+  - EnemyD
+  - PlayerProj
+  - EnemyProj
   layers:
   - Default
   - TransparentFX

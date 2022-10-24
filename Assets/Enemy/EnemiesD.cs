@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tourelle : Vaticanais
+public class EnemiesD : Vaticanais
 {
     public Queue<GameObject> stockball;
-    float cooldown;
     float overlifetime;
-
     Vector3 dir;
-    public GameObject bullet;
+    
     GameObject ball = null;
     private void Start()
     {
         stockball = new Queue<GameObject>();
-        
+        pv = 10;
     }
     public override void follow()
     {
@@ -22,10 +20,13 @@ public class tourelle : Vaticanais
         {
             base.follow();
         }
-        else if(cooldown < 0 && ball == null)
+        else if(cooldown < 0)
         {
-            ball = Instantiate(bullet, transform.position, Quaternion.identity);
-            stockball.Enqueue(ball);
+            GameObject ball = Instantiate(bullet, aim.transform.position, aim.transform.rotation);
+            ball.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * ball.GetComponent<Bille200>().GetProjSpeed(), ForceMode2D.Impulse);
+            ball.GetComponent<Bille200>().SetBool(true);
+            cooldown = maxCooldown;
+            //stockball.Enqueue(ball);
         }
     }
 
@@ -58,8 +59,8 @@ public class tourelle : Vaticanais
         }*/
 
 
-        cooldown += Time.deltaTime;
-        overlifetime += Time.deltaTime;
+        cooldown -= Time.deltaTime;
+        /*overlifetime += Time.deltaTime;
         if(cooldown > 2)
         {
             cooldown = -1;
@@ -73,8 +74,8 @@ public class tourelle : Vaticanais
                 GameObject b = stockball.Dequeue();
                 Destroy(b);
             }
-        }
+        }*/
         follow();
-        
+        Death();
     }
 }

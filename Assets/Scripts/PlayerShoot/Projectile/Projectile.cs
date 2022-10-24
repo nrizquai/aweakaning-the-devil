@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    protected float cooldown;
-    protected int ammo;
-    protected int speed;
-    protected int damage;
-    protected float atkSpeed;
-    protected float dispersion;
+    protected bool enemy;
 
     public Cards card;
     protected GameObject[] projectiles;
@@ -44,8 +39,20 @@ public class Projectile : MonoBehaviour
         return card.ammo;
     }
 
+    public int GetDamage()
+    {
+        return card.damage;
+    }
+
+    public void SetBool(bool change)
+    {
+        enemy = change;
+    }
+
     public void Destroy()
     {
         Destroy(gameObject);
     }
+
+    
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dirShoot : tourelle
+public class dirShoot : EnemiesD
 {
     Rigidbody2D bulletDir;
     Vector2 dir;

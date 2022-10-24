@@ -80,6 +80,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lock"",
+                    ""type"": ""Button"",
+                    ""id"": ""3351bf39-16ed-40aa-b981-b6c5a0211bb1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,17 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a202fec6-0528-4745-baa1-0c2a49ac831c"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -444,6 +464,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_movement_B = m_movement.FindAction("B", throwIfNotFound: true);
         m_movement_X = m_movement.FindAction("X", throwIfNotFound: true);
         m_movement_Y = m_movement.FindAction("Y", throwIfNotFound: true);
+        m_movement_Lock = m_movement.FindAction("Lock", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NavigateH = m_UI.FindAction("NavigateH", throwIfNotFound: true);
@@ -517,6 +538,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_movement_B;
     private readonly InputAction m_movement_X;
     private readonly InputAction m_movement_Y;
+    private readonly InputAction m_movement_Lock;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
@@ -527,6 +549,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @B => m_Wrapper.m_movement_B;
         public InputAction @X => m_Wrapper.m_movement_X;
         public InputAction @Y => m_Wrapper.m_movement_Y;
+        public InputAction @Lock => m_Wrapper.m_movement_Lock;
         public InputActionMap Get() { return m_Wrapper.m_movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -554,6 +577,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Y.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
                 @Y.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
                 @Y.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnY;
+                @Lock.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLock;
+                @Lock.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLock;
+                @Lock.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLock;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -576,6 +602,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Y.started += instance.OnY;
                 @Y.performed += instance.OnY;
                 @Y.canceled += instance.OnY;
+                @Lock.started += instance.OnLock;
+                @Lock.performed += instance.OnLock;
+                @Lock.canceled += instance.OnLock;
             }
         }
     }
@@ -661,6 +690,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnB(InputAction.CallbackContext context);
         void OnX(InputAction.CallbackContext context);
         void OnY(InputAction.CallbackContext context);
+        void OnLock(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
