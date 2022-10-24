@@ -6,8 +6,10 @@ public class Projectile : MonoBehaviour
 {
     protected bool enemy;
 
-    public Cards card;
+    public Cards usedCard;
+    public Cards[] cardsList;
     protected GameObject[] projectiles;
+    protected int index;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,26 +24,26 @@ public class Projectile : MonoBehaviour
 
     public virtual int GetProjSpeed()
     {
-        return card.speed;
+        return usedCard.speed;
     }
 
     public float GetTimerMax()
     {
-        return card.atkSpeed;
+        return usedCard.atkSpeed;
     }
 
     public float GetCooldown()
     {
-        return card.cooldown;
+        return usedCard.cooldown;
     }
     public int GetAmmo()
     {
-        return card.ammo;
+        return usedCard.ammo;
     }
 
     public int GetDamage()
     {
-        return card.damage;
+        return usedCard.damage;
     }
 
     public void SetBool(bool change)
@@ -52,6 +54,16 @@ public class Projectile : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void InitiateCard()
+    {
+        usedCard = cardsList[2];
+    }
+    
+    public void LoseLevel()
+    {
+        usedCard = cardsList[index - 1];
     }
 
     

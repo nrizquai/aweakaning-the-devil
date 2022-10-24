@@ -228,4 +228,9 @@ public class PlayerShoot : MonoBehaviour
         ammoMax[indexTimer] = projectils[3].GetComponent<Chaines>().GetAmmo();
         ammo[indexTimer] = ammoMax[indexTimer];
     }
+
+    public void DisableInputs()
+    {
+        inputs.Disable();
+    }
 }

@@ -118,7 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb61e9dc313a50409fb1be419bfb0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 822ac40b4f639824c96b5e170e6a3c2b, type: 2}
+  usedCard: {fileID: 11400000, guid: 822ac40b4f639824c96b5e170e6a3c2b, type: 2}
+  cardsList:
+  - {fileID: 11400000, guid: fabc3564011901044b30f37b1d957c90, type: 2}
+  - {fileID: 11400000, guid: 387e1a94fad4f164c8a0100b853208c5, type: 2}
+  - {fileID: 11400000, guid: 822ac40b4f639824c96b5e170e6a3c2b, type: 2}
 --- !u!70 &-396043677118218445
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

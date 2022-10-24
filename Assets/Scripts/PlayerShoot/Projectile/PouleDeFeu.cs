@@ -7,7 +7,8 @@ public class PouleDeFeu : Projectile
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Destroy", card.dispersion);
+        InitiateCard();
+        Invoke("Destroy", usedCard.dispersion);
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class PouleDeFeu : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(card.damage);
+                collision.GetComponent<PControl>().TakeDamage(usedCard.damage);
                 Destroy();
             }
 
@@ -28,13 +29,13 @@ public class PouleDeFeu : Projectile
         {
             if (collision.CompareTag("EnemyD"))
             {
-                collision.GetComponent<EnemiesD>().TakeDamage(card.damage);
+                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage);
                 Destroy();
             }
 
             if (collision.CompareTag("EnemyC"))
             {
-                collision.GetComponent<EnemiesC>().TakeDamage(card.damage);
+                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage);
                 Destroy();
             }
         }

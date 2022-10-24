@@ -137,4 +137,9 @@ public class PControl : Entity
     {
         lockDirection = false;
     }
+
+    public void DisableInputsPC()
+    {
+        inputs.Disable();
+    }
 }

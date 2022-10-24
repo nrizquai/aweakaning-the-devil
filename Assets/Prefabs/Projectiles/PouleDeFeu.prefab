@@ -97,7 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45aeab56b243034f94b2661f7368c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 051f283e66b2c5747b8c7d931d051ef6, type: 2}
+  usedCard: {fileID: 11400000, guid: 051f283e66b2c5747b8c7d931d051ef6, type: 2}
+  cardsList:
+  - {fileID: 11400000, guid: 3bcb5aa16178cf2498ad7165fd4d7957, type: 2}
+  - {fileID: 11400000, guid: 73a06a75b4d331f48a2fd0f21631dd9c, type: 2}
+  - {fileID: 11400000, guid: 051f283e66b2c5747b8c7d931d051ef6, type: 2}
 --- !u!50 &-4886979709522558836
 Rigidbody2D:
   serializedVersion: 4

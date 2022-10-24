@@ -17,6 +17,7 @@ public class Entity : MonoBehaviour
         if (pv <= 0)
         {
             Destroy(gameObject);
+            GameManager.instance.mobKill++;
         }
     }
 }

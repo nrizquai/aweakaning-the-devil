@@ -19,7 +19,15 @@ public class GameManager : MonoBehaviour
     public int indexB = -1;
     public int indexX = -1;
     public int indexY = -1;
-    // Start is called before the first frame update
+
+    public int mobKill;
+
+    public Sprite[] cards;
+    public GameObject[] loseLevelButton;
+    public GameObject loseLevelCanvas;
+
+    GameObject player;
+    PlayerShoot playerShoot;
     void Start()
     {
         if (instance == null)
@@ -31,10 +39,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (mobKill == 5)
+            SetupLoseLevel();
+
+        if(SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            player = FindObjectOfType<PControl>().gameObject;
+            playerShoot = FindObjectOfType<PlayerShoot>();
+        }
     }
 
     public void StartGame()
@@ -106,5 +120,19 @@ public class GameManager : MonoBehaviour
         indexB = -1;
         indexX = -1;
         indexY = -1;
+    }
+
+    public void SetupLoseLevel()
+    {
+        loseLevelCanvas.SetActive(true);
+        player.GetComponent<PControl>().DisableInputsPC();
+        playerShoot.DisableInputs();
+        loseLevelButton[0].GetComponent<Image>().sprite = cards[indexA];
+        loseLevelButton[1].GetComponent<Image>().sprite = cards[indexB];
+        loseLevelButton[2].GetComponent<Image>().sprite = cards[indexX];
+        loseLevelButton[3].GetComponent<Image>().sprite = cards[indexY];
+        mobKill = 0;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
     }
 }
