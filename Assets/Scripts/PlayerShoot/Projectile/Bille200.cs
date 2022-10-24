@@ -6,7 +6,6 @@ public class Bille200 : Projectile
 {
     void Start()
     {
-        InitiateCard();
         Invoke("Destroy", usedCard.dispersion);
     }
 

@@ -306,6 +306,9 @@ MonoBehaviour:
   - {fileID: 876795271}
   - {fileID: 1488454319}
   loseLevelCanvas: {fileID: 1316229943}
+  Enemy:
+  - {fileID: 6708166729655304665, guid: a17230214b2355a4080e2b1847c07f9d, type: 3}
+  - {fileID: 8520545475712131793, guid: 5735bce21128c2a4a8cd37e892b575f0, type: 3}
 --- !u!4 &12147805
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,7 +1350,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 876795274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12147804}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GetLoseLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &876795274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,7 +2167,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1407718177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12147804}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GetLoseLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1407718177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,7 +2299,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1488454322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12147804}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GetLoseLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1488454322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,7 +2431,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2021812632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12147804}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GetLoseLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2021812632
 MonoBehaviour:
   m_ObjectHideFlags: 0

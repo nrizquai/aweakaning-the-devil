@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     GameObject player;
     PlayerShoot playerShoot;
+
+    public GameObject[] Enemy;
     void Start()
     {
         if (instance == null)
@@ -134,5 +136,40 @@ public class GameManager : MonoBehaviour
         mobKill = 0;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
+    }
+
+    public void GetLoseLevel(int indexTimer)
+    {
+        int index = -1;
+        switch (indexTimer)
+        {
+            case 0 :
+                index = indexA;
+                break;
+            case 1:
+                index = indexB;
+                break;
+            case 2:
+                index = indexX;
+                break;
+            case 3:
+                index = indexY;
+                break;
+        }
+
+        //playerShoot.IniateLoseLevel(index, indexTimer);
+        if (playerShoot.IniateLoseLevel(index, indexTimer) > -1)
+        {
+            loseLevelCanvas.SetActive(false);
+            player.GetComponent<PControl>().EnableInputsPC();
+            playerShoot.EnableInputs();
+            Vector3 position = new Vector3(Random.Range(-8.3f, 8.3f), Random.Range(-4.2f, 4.2f), 0);
+            Instantiate(Enemy[0], position, transform.rotation);
+            Instantiate(Enemy[0], position, transform.rotation);
+            Instantiate(Enemy[0], position, transform.rotation);
+            Instantiate(Enemy[1], position, transform.rotation);
+            Instantiate(Enemy[1], position, transform.rotation);
+        }
+        else return;
     }
 }

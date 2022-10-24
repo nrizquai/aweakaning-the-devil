@@ -701,7 +701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663377565
 GameObject:
@@ -866,6 +866,11 @@ MonoBehaviour:
   - {fileID: 7604517257388165591, guid: 91c985498661b5943817fbab398418a5, type: 3}
   - {fileID: 9178066146064392119, guid: 04f2884492408d54ba79fd780784ac07, type: 3}
   - {fileID: 4392781376966545052, guid: dea7908a3d7bae346bb10a66b5623e71, type: 3}
+  projectilsScript:
+  - {fileID: 6258389586897542490, guid: e2dacc5e462a4de4d970a297b073656b, type: 3}
+  - {fileID: 7604517257388165588, guid: 91c985498661b5943817fbab398418a5, type: 3}
+  - {fileID: 9178066146064392116, guid: 04f2884492408d54ba79fd780784ac07, type: 3}
+  - {fileID: 4392781376966545055, guid: dea7908a3d7bae346bb10a66b5623e71, type: 3}
   timer:
   - 0
   - 0
@@ -889,6 +894,7 @@ MonoBehaviour:
   ammo: 00000000000000000000000000000000
   ammoMax: 00000000000000000000000000000000
   reloading: 00000000
+  firstInitiate: 00000000
 --- !u!50 &1663377572
 Rigidbody2D:
   serializedVersion: 4

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject[] projectils;
+    public Projectile[] projectilsScript;
     PlayerController inputs = null;
     GameObject shootOrigine;
     PControl playerControl;
@@ -17,6 +18,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] int[] ammoMax;
 
     [SerializeField] bool[] reloading;
+    [SerializeField] bool[] firstInitiate;
     void Awake()
     {
         inputs = new PlayerController();
@@ -114,25 +116,6 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    public void Initiate(int index,int indexTimer)
-    {
-        switch (index)
-        {
-            case 0:
-                InitiateBille200(indexTimer);
-                break;
-            case 1:
-                InitiatePouleDeFeu(indexTimer);
-                break;
-            case 2:
-                InitiatePompe(indexTimer);
-                break;
-            case 3:
-                InitiateChaine(indexTimer);
-                break;
-        }
-    }
-
     public void Bille200(GameObject origine, int indexTimer)
     {
         GameObject bille = Instantiate(projectils[0], origine.transform.position, origine.transform.rotation);
@@ -197,40 +180,33 @@ public class PlayerShoot : MonoBehaviour
         reloading[3] = false;
     }
 
-    public void InitiateBille200(int indexTimer)
+    public void Initiate(int indexProjectile, int indexTimer)
     {
-        timerMax[indexTimer] = projectils[0].GetComponent<Bille200>().GetTimerMax();
-        cdMax[indexTimer] = projectils[0].GetComponent<Bille200>().GetCooldown();
-        ammoMax[indexTimer] = projectils[0].GetComponent<Bille200>().GetAmmo();
-        ammo[indexTimer] = ammoMax[indexTimer];
-    }
-
-    public void InitiatePouleDeFeu(int indexTimer)
-    {
-        timerMax[indexTimer] = projectils[1].GetComponent<PouleDeFeu>().GetTimerMax();
-        cdMax[indexTimer] = projectils[1].GetComponent<PouleDeFeu>().GetCooldown();
-        ammoMax[indexTimer] = projectils[1].GetComponent<PouleDeFeu>().GetAmmo();
-        ammo[indexTimer] = ammoMax[indexTimer];
-    }
-
-    public void InitiatePompe(int indexTimer)
-    {
-        timerMax[indexTimer] = projectils[2].GetComponent<Pompe>().GetTimerMax();
-        cdMax[indexTimer] = projectils[2].GetComponent<Pompe>().GetCooldown();
-        ammoMax[indexTimer] = projectils[2].GetComponent<Pompe>().GetAmmo();
-        ammo[indexTimer] = ammoMax[indexTimer];
-    }
-
-    public void InitiateChaine(int indexTimer)
-    {
-        timerMax[indexTimer] = projectils[3].GetComponent<Chaines>().GetTimerMax();
-        cdMax[indexTimer] = projectils[3].GetComponent<Chaines>().GetCooldown();
-        ammoMax[indexTimer] = projectils[3].GetComponent<Chaines>().GetAmmo();
+        if (!firstInitiate[indexTimer])
+        {
+            projectilsScript[indexProjectile].InitiateCard();
+            firstInitiate[indexTimer] = true;
+        }
+        timerMax[indexTimer] = projectilsScript[indexProjectile].GetTimerMax();
+        cdMax[indexTimer] = projectilsScript[indexProjectile].GetCooldown();
+        ammoMax[indexTimer] = projectilsScript[indexProjectile].GetAmmo();
         ammo[indexTimer] = ammoMax[indexTimer];
     }
 
     public void DisableInputs()
     {
         inputs.Disable();
+    }
+
+    public void EnableInputs()
+    {
+        inputs.Enable();
+    }
+
+    public int IniateLoseLevel(int index, int indexTimer)
+    {
+        //projectilsScript[index].LoseLevel();
+        Initiate(index, indexTimer);
+        return projectilsScript[index].LoseLevel();
     }
 }

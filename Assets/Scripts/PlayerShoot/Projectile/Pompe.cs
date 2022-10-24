@@ -7,7 +7,6 @@ public class Pompe : Projectile
     // Start is called before the first frame update
     void Start()
     {
-        InitiateCard();
         Invoke("Destroy", usedCard.dispersion);
     }
 

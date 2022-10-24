@@ -9,11 +9,11 @@ public class Projectile : MonoBehaviour
     public Cards usedCard;
     public Cards[] cardsList;
     protected GameObject[] projectiles;
-    protected int index;
+    protected int index = 2;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -59,11 +59,21 @@ public class Projectile : MonoBehaviour
     public void InitiateCard()
     {
         usedCard = cardsList[2];
+        index = 2;
     }
     
-    public void LoseLevel()
+    public int LoseLevel()
     {
-        usedCard = cardsList[index - 1];
+        if (index > 0)
+        {
+            index--;
+            usedCard = cardsList[index];
+            Debug.Log(index);
+            return index;
+        }
+        else return -1;
+
+        
     }
 
     

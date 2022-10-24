@@ -37,7 +37,7 @@ public class PControl : Entity
         player = this.GetComponent<Rigidbody2D>();
         animWalk = this.GetComponent<Animator>();
         shootOrigine = GameObject.FindGameObjectWithTag("OrigineShoot");
-        pv = 20;
+        pv = 100;
         _speed = 30;
     }
 
@@ -141,5 +141,9 @@ public class PControl : Entity
     public void DisableInputsPC()
     {
         inputs.Disable();
+    }
+    public void EnableInputsPC()
+    {
+        inputs.Enable();
     }
 }
