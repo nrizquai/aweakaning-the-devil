@@ -11,7 +11,9 @@ public class PControl : Entity
     Rigidbody2D player;
     Animator animWalk;
     [SerializeField]Vector2 pos = Vector2.zero;
-    
+
+    bool lockDirection;
+
     GameObject shootOrigine;
     Vector3 shootdirection;
     float shootRotation;
@@ -41,6 +43,8 @@ public class PControl : Entity
 
     void Update()
     {
+        inputs.movement.Lock.performed += ctx => Lock();
+        inputs.movement.Lock.canceled += ctx => DeLock();
         Movement();
         Death();
     }
@@ -63,38 +67,50 @@ public class PControl : Entity
         if(pos.x > 0)
         {
             pos.x = velocity;
-            shootOrigine.transform.position = Vector3.right * 1.5f + transform.position;
-            shootdirection = Vector3.right;
-            shootRotation = -90;
-            animWalk.SetFloat("moveX", 1);
-            animWalk.SetFloat("moveY", 0);
+            if (!lockDirection)
+            {
+                shootOrigine.transform.position = Vector3.right * 1.5f + transform.position;
+                shootdirection = Vector3.right;
+                shootRotation = -90;
+                animWalk.SetFloat("moveX", 1);
+                animWalk.SetFloat("moveY", 0);
+            }
         }
         if(pos.x < 0)
         {
             pos.x = -velocity;
-            shootOrigine.transform.position = Vector3.right * (-1.5f) + transform.position;
-            shootdirection = Vector3.right * (-1);
-            shootRotation = 90;
-            animWalk.SetFloat("moveX", -1);
-            animWalk.SetFloat("moveY", 0);
+            if (!lockDirection)
+            {
+                shootOrigine.transform.position = Vector3.right * (-1.5f) + transform.position;
+                shootdirection = Vector3.right * (-1);
+                shootRotation = 90;
+                animWalk.SetFloat("moveX", -1);
+                animWalk.SetFloat("moveY", 0);
+            }
         }
         if(pos.y > 0)
         {
             pos.y = velocity;
-            shootOrigine.transform.position = Vector3.up*2f + transform.position;
-            shootdirection = Vector3.up;
-            shootRotation = 0;
-            animWalk.SetFloat("moveX", 0); 
-            animWalk.SetFloat("moveY", 1);
+            if (!lockDirection)
+            {
+                shootOrigine.transform.position = Vector3.up * 2f + transform.position;
+                shootdirection = Vector3.up;
+                shootRotation = 0;
+                animWalk.SetFloat("moveX", 0);
+                animWalk.SetFloat("moveY", 1);
+            }
         }
         if(pos.y < 0)
         {
             pos.y = -velocity;
-            shootOrigine.transform.position = Vector3.up * (-2f) + transform.position;
-            shootdirection = Vector3.up * (-1);
-            shootRotation = 180;
-            animWalk.SetFloat("moveX", 0); 
-            animWalk.SetFloat("moveY", -1);
+            if (!lockDirection)
+            {
+                shootOrigine.transform.position = Vector3.up * (-2f) + transform.position;
+                shootdirection = Vector3.up * (-1);
+                shootRotation = 180;
+                animWalk.SetFloat("moveX", 0);
+                animWalk.SetFloat("moveY", -1);
+            }
         }
 
 
@@ -110,5 +126,15 @@ public class PControl : Entity
     public float GetShootRotation()
     {
         return shootRotation;
+    }
+
+    public void Lock()
+    {
+        lockDirection = true;
+    }
+
+    public void DeLock()
+    {
+        lockDirection = false;
     }
 }
