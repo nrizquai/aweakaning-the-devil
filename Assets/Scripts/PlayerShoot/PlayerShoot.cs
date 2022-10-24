@@ -38,10 +38,7 @@ public class PlayerShoot : MonoBehaviour
     {
         shootOrigine = GameObject.FindGameObjectWithTag("OrigineShoot");
         playerControl = GetComponent<PControl>();
-        Initiate(GameManager.instance.indexA, 0);
-        Initiate(GameManager.instance.indexB, 1);
-        Initiate(GameManager.instance.indexX, 2);
-        Initiate(GameManager.instance.indexY, 3);
+        SetupGame();
     }
 
     // Update is called once per frame
@@ -205,8 +202,18 @@ public class PlayerShoot : MonoBehaviour
 
     public int IniateLoseLevel(int index, int indexTimer)
     {
-        //projectilsScript[index].LoseLevel();
         Initiate(index, indexTimer);
+        SetupGame();
         return projectilsScript[index].LoseLevel();
+    }
+
+    public void SetupGame()
+    {
+        Initiate(GameManager.instance.indexA, 0);
+        Initiate(GameManager.instance.indexB, 1);
+        Initiate(GameManager.instance.indexX, 2);
+        Initiate(GameManager.instance.indexY, 3);
+        playerControl.SetPv();
+        Debug.Log("SetupGame appellé");
     }
 }

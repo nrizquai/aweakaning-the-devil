@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     PlayerShoot playerShoot;
 
     public GameObject[] Enemy;
+    public Transform[] spawnPoint;
+    public int winRound;
+
+    public GameObject youWin;
+    public GameObject gameover;
     void Start()
     {
         if (instance == null)
@@ -44,9 +49,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (mobKill == 5)
-            SetupLoseLevel();
+        {
+            winRound++;
+            if (winRound < 9)
+                SetupLoseLevel();
+            else youWin.SetActive(true);
+        }
+        
 
-        if(SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             player = FindObjectOfType<PControl>().gameObject;
             playerShoot = FindObjectOfType<PlayerShoot>();
@@ -157,18 +168,16 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        //playerShoot.IniateLoseLevel(index, indexTimer);
         if (playerShoot.IniateLoseLevel(index, indexTimer) > -1)
         {
             loseLevelCanvas.SetActive(false);
             player.GetComponent<PControl>().EnableInputsPC();
             playerShoot.EnableInputs();
-            Vector3 position = new Vector3(Random.Range(-8.3f, 8.3f), Random.Range(-4.2f, 4.2f), 0);
-            Instantiate(Enemy[0], position, transform.rotation);
-            Instantiate(Enemy[0], position, transform.rotation);
-            Instantiate(Enemy[0], position, transform.rotation);
-            Instantiate(Enemy[1], position, transform.rotation);
-            Instantiate(Enemy[1], position, transform.rotation);
+            for (int i = 0; i < 6; i++)
+            {
+                int randomEnemy = Random.Range(0, 2);
+                Instantiate(Enemy[randomEnemy], spawnPoint[i].position, transform.rotation);
+            }
         }
         else return;
     }

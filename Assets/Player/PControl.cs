@@ -128,6 +128,11 @@ public class PControl : Entity
         return shootRotation;
     }
 
+    public void SetPv()
+    {
+        pv = 100;
+    }
+
     public void Lock()
     {
         lockDirection = true;
@@ -145,5 +150,14 @@ public class PControl : Entity
     public void EnableInputsPC()
     {
         inputs.Enable();
+    }
+
+    public override void Death()
+    {
+        if (pv <= 0)
+        {
+            GameManager.instance.gameover.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 }
