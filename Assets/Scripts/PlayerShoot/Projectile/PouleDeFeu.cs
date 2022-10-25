@@ -20,7 +20,7 @@ public class PouleDeFeu : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(usedCard.damage);
+                collision.GetComponent<PControl>().TakeDamage(cardsList[2].damage);
                 Destroy();
             }
 

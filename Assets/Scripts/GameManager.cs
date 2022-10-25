@@ -173,10 +173,12 @@ public class GameManager : MonoBehaviour
             loseLevelCanvas.SetActive(false);
             player.GetComponent<PControl>().EnableInputsPC();
             playerShoot.EnableInputs();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int randomEnemy = Random.Range(0, 2);
-                Instantiate(Enemy[randomEnemy], spawnPoint[i].position, transform.rotation);
+                GameObject pos = Instantiate(Enemy[randomEnemy], spawnPoint[i].position, spawnPoint[i].rotation);
+                Debug.Log(spawnPoint[i].position);
+                Debug.Log(pos.transform.position);
             }
         }
         else return;

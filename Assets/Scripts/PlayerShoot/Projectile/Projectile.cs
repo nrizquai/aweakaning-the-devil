@@ -68,7 +68,6 @@ public class Projectile : MonoBehaviour
         {
             index--;
             usedCard = cardsList[index];
-            Debug.Log(index);
             return index;
         }
         else return -1;
