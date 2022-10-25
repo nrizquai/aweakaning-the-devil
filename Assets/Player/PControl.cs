@@ -44,6 +44,7 @@ public class PControl : Entity
     {
         inputs.movement.Lock.performed += ctx => Lock();
         inputs.movement.Lock.canceled += ctx => DeLock();
+        inputs.movement.Pause.started += ctx => GameManager.instance.Pause();
         Movement();
         Death();
     }

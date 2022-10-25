@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameover;
 
     public Vector3 originePlayerPos;
+
+    public GameObject pauseMenu;
+    public GameObject firstButtonPause;
     void Start()
     {
         if (instance == null)
@@ -204,5 +207,52 @@ public class GameManager : MonoBehaviour
         {
             cardsAmmo[i].fillAmount = playerShoot.GetAmmo(i)/playerShoot.GetAmmoMax(i);
         }
+    }
+
+    public void Pause()
+    {
+        inGameCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(firstButtonPause);
+        pauseMenu.SetActive(true);
+        player.GetComponent<PControl>().DisableInputsPC();
+        playerShoot.DisableInputs();
+        Time.timeScale = 0f;
+    }
+
+    public void UnPause()
+    {
+        inGameCanvas.SetActive(true);
+        pauseMenu.SetActive(false);
+        player.GetComponent<PControl>().EnableInputsPC();
+        playerShoot.EnableInputs();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
+        Time.timeScale = 1f;
+    }
+
+    public void PauseReset()
+    {
+        pauseMenu.SetActive(false);
+        returnButton.SetActive(true);
+        startButtonSelect.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        SceneManager.LoadScene(1);
+        mobKill = 0;
+        winRound = 0;
+        Time.timeScale = 1f;
+    }
+
+    public void MainMenuPause()
+    {
+        pauseMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        ResetIndexCard();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
+        SceneManager.LoadScene(0);
+        mobKill = 0;
+        winRound = 0;
+        Time.timeScale = 1f;
     }
 }
