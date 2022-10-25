@@ -33,8 +33,12 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnPoint;
     public int winRound;
 
+    public GameObject inGameCanvas;
+    public Image hpUI;
     public GameObject youWin;
     public GameObject gameover;
+
+    public Vector3 originePlayerPos;
     void Start()
     {
         if (instance == null)
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<PControl>().gameObject;
             playerShoot = FindObjectOfType<PlayerShoot>();
+            HPUI();
         }
     }
 
@@ -124,6 +129,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(2);
             returnButton.SetActive(false);
             startButtonSelect.SetActive(false);
+            inGameCanvas.SetActive(true);
         }
     }
 
@@ -145,6 +151,7 @@ public class GameManager : MonoBehaviour
         loseLevelButton[2].GetComponent<Image>().sprite = cards[indexX];
         loseLevelButton[3].GetComponent<Image>().sprite = cards[indexY];
         mobKill = 0;
+        player.transform.position = originePlayerPos;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
     }
@@ -177,10 +184,13 @@ public class GameManager : MonoBehaviour
             {
                 int randomEnemy = Random.Range(0, 2);
                 GameObject pos = Instantiate(Enemy[randomEnemy], spawnPoint[i].position, spawnPoint[i].rotation);
-                Debug.Log(spawnPoint[i].position);
-                Debug.Log(pos.transform.position);
             }
         }
         else return;
+    }
+
+    public void HPUI()
+    {
+        hpUI.fillAmount = player.GetComponent<PControl>().GetHp()/100;
     }
 }

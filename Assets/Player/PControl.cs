@@ -20,7 +20,6 @@ public class PControl : Entity
     void Awake()
     {
         inputs = new PlayerController();
-        //inputs.movement.LeftStick.started += Movement;
     }
     private void OnEnable()
     {
@@ -37,6 +36,7 @@ public class PControl : Entity
         player = this.GetComponent<Rigidbody2D>();
         animWalk = this.GetComponent<Animator>();
         shootOrigine = GameObject.FindGameObjectWithTag("OrigineShoot");
+        GameManager.instance.originePlayerPos = transform.position;
         pv = 100;
         _speed = 30;
     }
@@ -69,7 +69,7 @@ public class PControl : Entity
             pos.x = velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.right * 1.5f + transform.position;
+                shootOrigine.transform.position = Vector3.right + transform.position;
                 shootdirection = Vector3.right;
                 shootRotation = -90;
                 animWalk.SetFloat("moveX", 1);
@@ -81,7 +81,7 @@ public class PControl : Entity
             pos.x = -velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.right * (-1.5f) + transform.position;
+                shootOrigine.transform.position = Vector3.right * (-1) + transform.position;
                 shootdirection = Vector3.right * (-1);
                 shootRotation = 90;
                 animWalk.SetFloat("moveX", -1);
@@ -93,7 +93,7 @@ public class PControl : Entity
             pos.y = velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.up * 2f + transform.position;
+                shootOrigine.transform.position = Vector3.up + transform.position;
                 shootdirection = Vector3.up;
                 shootRotation = 0;
                 animWalk.SetFloat("moveX", 0);
@@ -105,7 +105,7 @@ public class PControl : Entity
             pos.y = -velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.up * (-2f) + transform.position;
+                shootOrigine.transform.position = Vector3.up * (-1) + transform.position;
                 shootdirection = Vector3.up * (-1);
                 shootRotation = 180;
                 animWalk.SetFloat("moveX", 0);
@@ -128,9 +128,9 @@ public class PControl : Entity
         return shootRotation;
     }
 
-    public void SetPv()
+    public float GetHp()
     {
-        pv = 100;
+        return pv;
     }
 
     public void Lock()

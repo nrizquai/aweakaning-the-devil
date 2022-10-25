@@ -213,7 +213,5 @@ public class PlayerShoot : MonoBehaviour
         Initiate(GameManager.instance.indexB, 1);
         Initiate(GameManager.instance.indexX, 2);
         Initiate(GameManager.instance.indexY, 3);
-        playerControl.SetPv();
-        Debug.Log("SetupGame appellé");
     }
 }

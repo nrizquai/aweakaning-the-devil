@@ -21,5 +21,6 @@ public class Vaticanais : Entity
     public virtual void follow()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+        Debug.Log(GetComponent<Rigidbody2D>().velocity);
     }
 }
