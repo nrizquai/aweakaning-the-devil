@@ -36,8 +36,11 @@ public class GameManager : MonoBehaviour
     public GameObject inGameCanvas;
     public Image hpUI;
     public Image[] cardsAmmo;
+
     public GameObject youWin;
     public GameObject gameover;
+    public GameObject winLoseCanvas;
+    public GameObject firstButtonWinLose;
 
     public Vector3 originePlayerPos;
 
@@ -61,7 +64,17 @@ public class GameManager : MonoBehaviour
             winRound++;
             if (winRound < 9)
                 SetupLoseLevel();
-            else youWin.SetActive(true);
+            else
+            {
+                mobKill = 0;
+                inGameCanvas.SetActive(false);
+                youWin.SetActive(true);
+                winLoseCanvas.SetActive(true);
+                player.GetComponent<PControl>().DisableInputsPC();
+                playerShoot.DisableInputs();
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(firstButtonWinLose);
+            }
         }
         
 
@@ -234,6 +247,7 @@ public class GameManager : MonoBehaviour
     public void PauseReset()
     {
         pauseMenu.SetActive(false);
+        winLoseCanvas.SetActive(false);
         returnButton.SetActive(true);
         startButtonSelect.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -246,6 +260,7 @@ public class GameManager : MonoBehaviour
     public void MainMenuPause()
     {
         pauseMenu.SetActive(false);
+        winLoseCanvas.SetActive(false);
         mainMenu.SetActive(true);
         ResetIndexCard();
         EventSystem.current.SetSelectedGameObject(null);

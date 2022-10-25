@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using static UnityEngine.InputSystem.InputAction;
@@ -69,7 +70,7 @@ public class PControl : Entity
             pos.x = velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.right + transform.position;
+                shootOrigine.transform.position = Vector3.right * 0.5f + transform.position;
                 shootdirection = Vector3.right;
                 shootRotation = -90;
                 animWalk.SetFloat("moveX", 1);
@@ -81,7 +82,7 @@ public class PControl : Entity
             pos.x = -velocity;
             if (!lockDirection)
             {
-                shootOrigine.transform.position = Vector3.right * (-1) + transform.position;
+                shootOrigine.transform.position = Vector3.right * (-0.5f) + transform.position;
                 shootdirection = Vector3.right * (-1);
                 shootRotation = 90;
                 animWalk.SetFloat("moveX", -1);
@@ -157,6 +158,10 @@ public class PControl : Entity
         if (pv <= 0)
         {
             GameManager.instance.gameover.SetActive(true);
+            GameManager.instance.inGameCanvas.SetActive(false);
+            GameManager.instance.winLoseCanvas.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(GameManager.instance.firstButtonWinLose);
             Destroy(gameObject);
         }
     }
