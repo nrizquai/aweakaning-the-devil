@@ -325,8 +325,8 @@ MonoBehaviour:
   youWin: {fileID: 498535117}
   gameover: {fileID: 2038984178}
   originePlayerPos: {x: 0, y: 0, z: 0}
-  pauseMenu: {fileID: 0}
-  firstButtonPause: {fileID: 0}
+  pauseMenu: {fileID: 1196722243}
+  firstButtonPause: {fileID: 1961754889}
 --- !u!4 &12147805
 Transform:
   m_ObjectHideFlags: 0
@@ -2326,7 +2326,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12147804}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ReturnMainMenu
+        m_MethodName: MainMenuPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
