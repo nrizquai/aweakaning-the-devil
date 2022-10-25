@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour
 {
     [SerializeField] protected float _speed;
     [SerializeField] protected float pv;
-
+    protected Animator animWalk;
     public virtual void TakeDamage(int damage)
     {
         pv -= damage;

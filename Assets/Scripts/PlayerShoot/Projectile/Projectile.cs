@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
     {
         return usedCard.cooldown;
     }
-    public int GetAmmo()
+    public float GetAmmo()
     {
         return usedCard.ammo;
     }

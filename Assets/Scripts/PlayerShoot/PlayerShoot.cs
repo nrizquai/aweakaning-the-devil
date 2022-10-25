@@ -14,8 +14,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] float[] timerMax;
     [SerializeField] float[] CD;
     [SerializeField] float[] cdMax;
-    [SerializeField] int[] ammo;
-    [SerializeField] int[] ammoMax;
+    [SerializeField] float[] ammo;
+    [SerializeField] float[] ammoMax;
 
     [SerializeField] bool[] reloading;
     [SerializeField] bool[] firstInitiate;
@@ -213,5 +213,14 @@ public class PlayerShoot : MonoBehaviour
         Initiate(GameManager.instance.indexB, 1);
         Initiate(GameManager.instance.indexX, 2);
         Initiate(GameManager.instance.indexY, 3);
+    }
+
+    public float GetAmmo(int index)
+    {
+        return ammo[index];
+    }
+    public float GetAmmoMax(int index)
+    {
+        return ammoMax[index];
     }
 }

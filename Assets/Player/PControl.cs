@@ -9,7 +9,6 @@ public class PControl : Entity
 {
     PlayerController inputs = null;
     Rigidbody2D player;
-    Animator animWalk;
     [SerializeField]Vector2 pos = Vector2.zero;
 
     bool lockDirection;

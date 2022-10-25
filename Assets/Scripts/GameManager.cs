@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject inGameCanvas;
     public Image hpUI;
+    public Image[] cardsAmmo;
     public GameObject youWin;
     public GameObject gameover;
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
             player = FindObjectOfType<PControl>().gameObject;
             playerShoot = FindObjectOfType<PlayerShoot>();
             HPUI();
+            CardsUI();
         }
     }
 
@@ -130,6 +132,14 @@ public class GameManager : MonoBehaviour
             returnButton.SetActive(false);
             startButtonSelect.SetActive(false);
             inGameCanvas.SetActive(true);
+            loseLevelCanvas.SetActive(true);
+            loseLevelButton[0].GetComponent<Image>().sprite = cards[indexA];
+            loseLevelButton[1].GetComponent<Image>().sprite = cards[indexB];
+            loseLevelButton[2].GetComponent<Image>().sprite = cards[indexX];
+            loseLevelButton[3].GetComponent<Image>().sprite = cards[indexY];
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
+            loseLevelCanvas.SetActive(false);
         }
     }
 
@@ -146,14 +156,8 @@ public class GameManager : MonoBehaviour
         loseLevelCanvas.SetActive(true);
         player.GetComponent<PControl>().DisableInputsPC();
         playerShoot.DisableInputs();
-        loseLevelButton[0].GetComponent<Image>().sprite = cards[indexA];
-        loseLevelButton[1].GetComponent<Image>().sprite = cards[indexB];
-        loseLevelButton[2].GetComponent<Image>().sprite = cards[indexX];
-        loseLevelButton[3].GetComponent<Image>().sprite = cards[indexY];
         mobKill = 0;
         player.transform.position = originePlayerPos;
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(loseLevelButton[0]);
     }
 
     public void GetLoseLevel(int indexTimer)
@@ -192,5 +196,13 @@ public class GameManager : MonoBehaviour
     public void HPUI()
     {
         hpUI.fillAmount = player.GetComponent<PControl>().GetHp()/100;
+    }
+
+    public void CardsUI()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            cardsAmmo[i].fillAmount = playerShoot.GetAmmo(i)/playerShoot.GetAmmoMax(i);
+        }
     }
 }

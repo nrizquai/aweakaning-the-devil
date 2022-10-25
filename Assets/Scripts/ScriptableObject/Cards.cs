@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cards : ScriptableObject
 {
     public float cooldown;
-    public int ammo;
+    public float ammo;
     public int speed;
     public int damage;
     public float atkSpeed;

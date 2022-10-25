@@ -9,9 +9,11 @@ public class Vaticanais : Entity
     public GameObject bullet;
     [SerializeField] protected float cooldown = 2;
     protected float maxCooldown = 2;
+    protected Vector3 lastPos;
     void Awake()
     {
         _target = FindObjectOfType<PControl>().transform;
+        animWalk = this.GetComponent<Animator>();
     }
 
     void Update()
@@ -20,7 +22,36 @@ public class Vaticanais : Entity
     }
     public virtual void follow()
     {
+        lastPos = transform.position;
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
-        Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        float x = transform.position.x - lastPos.x;
+        float y = transform.position.y - lastPos.y;
+
+        if(Mathf.Abs(x)> Mathf.Abs(y))
+        {
+            if(x > 0)
+            {
+                animWalk.SetFloat("PosX", 1);
+                animWalk.SetFloat("PosY", 0);
+            }
+            else
+            {
+                animWalk.SetFloat("PosX", -1);
+                animWalk.SetFloat("PosY", 0);
+            }
+        }
+        else
+        {
+            if(y > 0)
+            {
+                animWalk.SetFloat("PosX", 0);
+                animWalk.SetFloat("PosY", 1);
+            }
+            else
+            {
+                animWalk.SetFloat("PosX", 0);
+                animWalk.SetFloat("PosY", -1);
+            }
+        }
     }
 }
