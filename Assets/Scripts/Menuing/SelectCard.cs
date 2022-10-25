@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectCard : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class SelectCard : MonoBehaviour
         {
             inputs.UI.A.started += ctx =>
             {
+                Debug.Log(EventSystem.current.currentSelectedGameObject);
                 if (y == 0)
                 {
                     if (x != lastAPress)
