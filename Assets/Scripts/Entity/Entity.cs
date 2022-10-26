@@ -7,9 +7,17 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] protected float pv;
     protected Animator animWalk;
-    public virtual void TakeDamage(int damage)
+
+    protected float timerSFX;
+    protected float timerMaxSFX = 1;
+    public virtual void TakeDamage(int damage, int indexSFX)
     {
         pv -= damage;
+        if(timerSFX <= 0) 
+        {
+            AudioManager.instance.sfxSource.PlayOneShot(AudioManager.instance.sfx[indexSFX]);
+            timerSFX = timerMaxSFX;
+        }
     }
 
     public virtual void Death()
@@ -19,5 +27,10 @@ public class Entity : MonoBehaviour
             Destroy(gameObject);
             GameManager.instance.mobKill++;
         }
+    }
+
+    public float GetTimer()
+    {
+        return timerSFX;
     }
 }

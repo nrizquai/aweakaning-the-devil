@@ -20,7 +20,7 @@ public class PouleDeFeu : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(cardsList[2].damage);
+                collision.GetComponent<PControl>().TakeDamage(cardsList[2].damage,1);
                 Destroy();
             }
 
@@ -28,13 +28,13 @@ public class PouleDeFeu : Projectile
         {
             if (collision.CompareTag("EnemyD"))
             {
-                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage);
+                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0);
                 Destroy();
             }
 
             if (collision.CompareTag("EnemyC"))
             {
-                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage);
+                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0);
                 Destroy();
             }
         }

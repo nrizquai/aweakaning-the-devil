@@ -60,6 +60,7 @@ public class EnemiesD : Vaticanais
 
 
         cooldown -= Time.deltaTime;
+        timerSFX -= Time.deltaTime;
         /*overlifetime += Time.deltaTime;
         if(cooldown > 2)
         {
@@ -78,4 +79,5 @@ public class EnemiesD : Vaticanais
         follow();
         Death();
     }
+
 }

@@ -13,6 +13,7 @@ public class EnemiesC : Vaticanais
     void Update()
     {
         cooldown -= Time.deltaTime;
+        timerSFX -= Time.deltaTime;
         Death();
 
         if (!range)

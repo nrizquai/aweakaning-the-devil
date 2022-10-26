@@ -21,7 +21,7 @@ public class Chaines : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(usedCard.damage);
+                collision.GetComponent<PControl>().TakeDamage(usedCard.damage,1);
                 Destroy();
             }
 
@@ -29,13 +29,13 @@ public class Chaines : Projectile
         {
             if (collision.CompareTag("EnemyD"))
             {
-                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage);
+                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0);
                 Destroy();
             }
 
             if (collision.CompareTag("EnemyC"))
             {
-                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage);
+                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0);
                 Destroy();
             }
         }

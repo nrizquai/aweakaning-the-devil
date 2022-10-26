@@ -43,6 +43,7 @@ public class PControl : Entity
 
     void Update()
     {
+        timerSFX -= Time.deltaTime;
         inputs.movement.Lock.performed += ctx => Lock();
         inputs.movement.Lock.canceled += ctx => DeLock();
         inputs.movement.Pause.started += ctx => GameManager.instance.Pause();
