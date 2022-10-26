@@ -39,5 +39,7 @@ public class Chaines : Projectile
                 Destroy();
             }
         }
+        if (collision.CompareTag("Wall"))
+            Destroy(gameObject);
     }
 }

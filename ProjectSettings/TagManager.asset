@@ -13,6 +13,7 @@ TagManager:
   - EnemyD
   - PlayerProj
   - EnemyProj
+  - Wall
   layers:
   - Default
   - TransparentFX

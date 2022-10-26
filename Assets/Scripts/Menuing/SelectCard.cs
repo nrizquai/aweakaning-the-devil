@@ -60,7 +60,6 @@ public class SelectCard : MonoBehaviour
         {
             inputs.UI.A.started += ctx =>
             {
-                Debug.Log(EventSystem.current.currentSelectedGameObject);
                 if (y == 0)
                 {
                     if (x != lastAPress)
@@ -68,9 +67,9 @@ public class SelectCard : MonoBehaviour
                 }
                 else if (y == -1)
                 {
-                    if (x + 5 != lastAPress)
+                    if (x + 2 != lastAPress)
                     {
-                        CardA(x + 5);
+                        CardA(x + 2);
                     }
                 }
             };
@@ -84,9 +83,9 @@ public class SelectCard : MonoBehaviour
                 }
                 else if (y == -1)
                 {
-                    if (x + 5 != lastBPress)
+                    if (x + 2 != lastBPress)
                     {
-                        CardB(x + 5);
+                        CardB(x + 2);
                     }
                 }
             };
@@ -100,9 +99,9 @@ public class SelectCard : MonoBehaviour
                 }
                 else if (y == -1)
                 {
-                    if (x + 5 != lastXPress)
+                    if (x + 2 != lastXPress)
                     {
-                        CardX(x + 5);
+                        CardX(x + 2);
                     }
                 }
             };
@@ -116,9 +115,9 @@ public class SelectCard : MonoBehaviour
                 }
                 else if (y == -1)
                 {
-                    if (x + 5 != lastYPress)
+                    if (x + 2 != lastYPress)
                     {
-                        CardY(x + 5);
+                        CardY(x + 2);
                     }
                 }
             };
@@ -128,7 +127,7 @@ public class SelectCard : MonoBehaviour
     public void MoveLeft()
     {
         if (inputs.UI.NavigateH.ReadValue<float>() > 0.5f)
-            if (x < 4)
+            if (x < 1)
             {
                 x++;
                 gameObject.transform.position = cardSlot[x].transform.position;

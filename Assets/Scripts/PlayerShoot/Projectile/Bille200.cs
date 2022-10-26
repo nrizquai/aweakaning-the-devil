@@ -37,5 +37,8 @@ public class Bille200 : Projectile
                 Destroy();
             }
         }
+
+        if (collision.CompareTag("Wall"))
+            Destroy(gameObject);
     }
 }

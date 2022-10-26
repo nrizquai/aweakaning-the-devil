@@ -437,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &123528606
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1677,7 +1677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888559088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.24, y: 0, z: 0}
+  m_LocalPosition: {x: 2.25, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1411988484}
@@ -1698,7 +1698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &890604831
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,15 +2592,9 @@ MonoBehaviour:
   firstLine:
   - {fileID: 697880705}
   - {fileID: 1994719111}
+  secondLine:
   - {fileID: 1356936560}
   - {fileID: 888559088}
-  - {fileID: 123528605}
-  secondLine:
-  - {fileID: 101058304}
-  - {fileID: 984628080}
-  - {fileID: 64061303}
-  - {fileID: 645464034}
-  - {fileID: 1850110707}
   buttonSelected:
   - {fileID: 6423784871416941979, guid: acb2ab0a7b5945040b6c72fcd6a01533, type: 3}
   - {fileID: 3968893095456074986, guid: 09d4bf81f7e9e2b4499ae3514bde8564, type: 3}
@@ -3017,7 +3011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356936560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.29, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1411988484}

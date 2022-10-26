@@ -39,5 +39,7 @@ public class Pompe : Projectile
                 Destroy();
             }
         }
+        if (collision.CompareTag("Wall"))
+            Destroy(gameObject);
     }
 }
