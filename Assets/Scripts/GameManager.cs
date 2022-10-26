@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void Tutorial()
     {
         SceneManager.LoadScene(3);
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         returnButton.SetActive(true);
         mainMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
     public void Credit()
     {
         SceneManager.LoadScene(4);
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         returnButton.SetActive(true);
         mainMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(0);
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         returnButton.SetActive(false);
         startButtonSelect.SetActive(false);
         mainMenu.SetActive(true);
@@ -145,6 +148,7 @@ public class GameManager : MonoBehaviour
         if(indexA > -1 && indexB > -1 && indexX > -1 && indexY > -1)
         {
             SceneManager.LoadScene(2);
+            EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
             returnButton.SetActive(false);
             startButtonSelect.SetActive(false);
             inGameCanvas.SetActive(true);
@@ -235,6 +239,7 @@ public class GameManager : MonoBehaviour
 
     public void UnPause()
     {
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         inGameCanvas.SetActive(true);
         pauseMenu.SetActive(false);
         player.GetComponent<PControl>().EnableInputsPC();
@@ -246,6 +251,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseReset()
     {
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         pauseMenu.SetActive(false);
         winLoseCanvas.SetActive(false);
         returnButton.SetActive(true);
@@ -259,6 +265,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenuPause()
     {
+        EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         pauseMenu.SetActive(false);
         winLoseCanvas.SetActive(false);
         mainMenu.SetActive(true);

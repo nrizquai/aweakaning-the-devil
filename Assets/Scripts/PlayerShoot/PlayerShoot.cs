@@ -133,14 +133,14 @@ public class PlayerShoot : MonoBehaviour
     public void Pompe(GameObject origine, int indexTimer)
     {
         Quaternion rotation = Quaternion.Euler(0, 0, playerControl.GetShootRotation());
-        Quaternion rotation1 = Quaternion.Euler(0, 0, 45);
-        Quaternion rotation2 = Quaternion.Euler(0, 0, - 45);
-        GameObject pompe = Instantiate(projectils[2], origine.transform.position, origine.transform.rotation);
+        Quaternion rotation1 = Quaternion.Euler(0, 0, playerControl.GetShootRotation() + 45);
+        Quaternion rotation2 = Quaternion.Euler(0, 0, playerControl.GetShootRotation() - 45);
+        GameObject pompe = Instantiate(projectils[2], origine.transform.position, rotation);
         GameObject pompe2 = Instantiate(projectils[2], origine.transform.position, rotation1);
         GameObject pompe3 = Instantiate(projectils[2], origine.transform.position, rotation2);
-        pompe.GetComponent<Rigidbody2D>().AddRelativeForce(playerControl.GetDirectionShoot() * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
-        pompe2.GetComponent<Rigidbody2D>().AddRelativeForce(playerControl.GetDirectionShoot() * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
-        pompe3.GetComponent<Rigidbody2D>().AddRelativeForce(playerControl.GetDirectionShoot() * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
+        pompe.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
+        pompe2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
+        pompe3.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
 
         ammo[indexTimer]--;
         timer[indexTimer] = timerMax[indexTimer];
