@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PouleDeFeu : Projectile
 {
+    public SpriteRenderer chickenImage;
     void Start()
     {
         Invoke("Destroy", usedCard.dispersion);

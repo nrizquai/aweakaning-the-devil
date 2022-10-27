@@ -157,6 +157,7 @@ public class SelectCard : MonoBehaviour
             if (y < -1)
             {
                 y++;
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 GameManager.instance.DesactivateUI();
                 onSelect = true;
                 timer = timerMax;
@@ -168,6 +169,7 @@ public class SelectCard : MonoBehaviour
             if (y == -1 && y > -2)
             {
                 y--;
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameManager.instance.ActivateUI();
                 onSelect = false;
                 timer = timerMax;

@@ -134,8 +134,11 @@ public class PlayerShoot : MonoBehaviour
 
     public void PouleDeFeu(GameObject origine, int indexTimer)
     {
-        GameObject poule = Instantiate(projectils[1], origine.transform.position, origine.transform.rotation);
-        poule.GetComponent<Rigidbody2D>().AddRelativeForce(playerControl.GetDirectionShoot() * poule.GetComponent<PouleDeFeu>().GetProjSpeed(), ForceMode2D.Impulse);
+        Quaternion rotation = Quaternion.Euler(0, 0, playerControl.GetShootRotation());
+        GameObject poule = Instantiate(projectils[1], origine.transform.position, rotation);
+        poule.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * poule.GetComponent<PouleDeFeu>().GetProjSpeed(), ForceMode2D.Impulse);
+        if (playerControl.GetShootRotation() == -90)
+            poule.GetComponent<PouleDeFeu>().chickenImage.flipY = true;
 
         ammo[indexTimer]--;
         timer[indexTimer] = timerMax[indexTimer];
@@ -160,7 +163,8 @@ public class PlayerShoot : MonoBehaviour
     public void Chaines(GameObject origine, int indexTimer)
     {
         Quaternion rotation = Quaternion.Euler(0, 0, playerControl.GetShootRotation());
-        Instantiate(projectils[3], origine.transform.position, rotation);
+        Vector3 pos = playerControl.GetDirectionShoot()*1;
+        Instantiate(projectils[3], origine.transform.position+pos, rotation);
 
         ammo[indexTimer]--;
         timer[indexTimer] = timerMax[indexTimer];
