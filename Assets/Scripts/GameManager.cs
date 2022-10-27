@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject firstButtonPause;
+
+    public GameObject deleteSquare;
     void Start()
     {
         if (instance == null)
@@ -63,7 +65,10 @@ public class GameManager : MonoBehaviour
         {
             winRound++;
             if (winRound < 9)
+            {
+                deleteSquare.SetActive(true);
                 SetupLoseLevel();
+            }
             else
             {
                 mobKill = 0;
@@ -209,6 +214,7 @@ public class GameManager : MonoBehaviour
                 int randomEnemy = Random.Range(0, 2);
                 GameObject pos = Instantiate(Enemy[randomEnemy], spawnPoint[i].position, spawnPoint[i].rotation);
             }
+            deleteSquare.SetActive(false);
         }
         else return;
     }

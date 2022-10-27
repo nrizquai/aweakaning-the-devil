@@ -14,6 +14,7 @@ public class ButtonSelection : MonoBehaviour
     {
         //textField.color = colorText;
         image.enabled = true;
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
     }
 
     public void DeselectButton()
@@ -21,4 +22,15 @@ public class ButtonSelection : MonoBehaviour
         //textField.color = Color.white;
         image.enabled = false;
     }
+
+    public void OnClick()
+    {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[8], 0.1f);
+    }
+
+    public void Navigate()
+    {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
+    }
+
 }
