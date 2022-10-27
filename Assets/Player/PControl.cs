@@ -32,12 +32,11 @@ public class PControl : Entity
     }
     void Start()
     {
-        //pos = Vector2.zero;
         player = this.GetComponent<Rigidbody2D>();
         animWalk = this.GetComponent<Animator>();
         shootOrigine = GameObject.FindGameObjectWithTag("OrigineShoot");
         GameManager.instance.originePlayerPos = transform.position;
-        pv = 100;
+        pv = 150;
         _speed = 30;
     }
 

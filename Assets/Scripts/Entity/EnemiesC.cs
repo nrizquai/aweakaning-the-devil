@@ -35,6 +35,8 @@ public class EnemiesC : Vaticanais
 
     public void Shoot()
     {
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[5], 0.1f);
+        animWalk.SetTrigger("isShooting");
         Quaternion rotation1 = Quaternion.Euler(0, 0, aim.transform.rotation.eulerAngles.z + 45);
         Quaternion rotation2 = Quaternion.Euler(0, 0, aim.transform.rotation.eulerAngles.z - 45);
         GameObject ball = Instantiate(bullet, aim.transform.position, aim.transform.rotation);

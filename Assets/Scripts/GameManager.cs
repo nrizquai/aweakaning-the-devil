@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
 
     public void HPUI()
     {
-        hpUI.fillAmount = player.GetComponent<PControl>().GetHp()/100;
+        hpUI.fillAmount = player.GetComponent<PControl>().GetHp()/150;
     }
 
     public void CardsUI()
