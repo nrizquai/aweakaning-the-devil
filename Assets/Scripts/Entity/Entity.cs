@@ -10,12 +10,12 @@ public class Entity : MonoBehaviour
 
     protected float timerSFX;
     protected float timerMaxSFX = 1;
-    public virtual void TakeDamage(int damage, int indexSFX)
+    public virtual void TakeDamage(int damage, int indexSFX, int indexSource)
     {
         pv -= damage;
         if(timerSFX <= 0) 
         {
-            AudioManager.instance.sfxSource.PlayOneShot(AudioManager.instance.sfx[indexSFX]);
+            AudioManager.instance.sfxSource[indexSource].PlayOneShot(AudioManager.instance.sfx[indexSFX]);
             timerSFX = timerMaxSFX;
         }
     }

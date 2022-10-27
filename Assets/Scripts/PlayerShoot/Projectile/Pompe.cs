@@ -21,7 +21,7 @@ public class Pompe : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(usedCard.damage,1);
+                collision.GetComponent<PControl>().TakeDamage(usedCard.damage,1,0);
                 Destroy();
             }
 
@@ -29,13 +29,13 @@ public class Pompe : Projectile
         {
             if (collision.CompareTag("EnemyD"))
             {
-                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0);
+                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0,1);
                 Destroy();
             }
 
             if (collision.CompareTag("EnemyC"))
             {
-                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0);
+                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0,1);
                 Destroy();
             }
         }

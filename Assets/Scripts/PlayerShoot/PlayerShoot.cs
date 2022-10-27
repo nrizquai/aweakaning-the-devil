@@ -138,6 +138,7 @@ public class PlayerShoot : MonoBehaviour
         GameObject pompe = Instantiate(projectils[2], origine.transform.position, rotation);
         GameObject pompe2 = Instantiate(projectils[2], origine.transform.position, rotation1);
         GameObject pompe3 = Instantiate(projectils[2], origine.transform.position, rotation2);
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[5]);
         pompe.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
         pompe2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
         pompe3.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);

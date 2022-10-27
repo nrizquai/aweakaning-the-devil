@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource sfxSource;
+    public AudioSource[] sfxSource;
     public AudioClip[] sfx;
     // Start is called before the first frame update
     void Start()

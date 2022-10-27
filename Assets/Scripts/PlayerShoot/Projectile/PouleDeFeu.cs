@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PouleDeFeu : Projectile
 {
-    // Start is called before the first frame update
     void Start()
     {
         Invoke("Destroy", usedCard.dispersion);
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[2]);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -20,7 +19,7 @@ public class PouleDeFeu : Projectile
         if (enemy)
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PControl>().TakeDamage(cardsList[2].damage,1);
+                collision.GetComponent<PControl>().TakeDamage(cardsList[2].damage,1,0);
                 Destroy();
             }
 
@@ -28,13 +27,13 @@ public class PouleDeFeu : Projectile
         {
             if (collision.CompareTag("EnemyD"))
             {
-                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0);
+                collision.GetComponent<EnemiesD>().TakeDamage(usedCard.damage,0,1);
                 Destroy();
             }
 
             if (collision.CompareTag("EnemyC"))
             {
-                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0);
+                collision.GetComponent<EnemiesC>().TakeDamage(usedCard.damage,0,1);
                 Destroy();
             }
         }
