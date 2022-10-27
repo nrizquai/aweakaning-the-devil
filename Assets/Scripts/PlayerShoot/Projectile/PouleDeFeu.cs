@@ -7,7 +7,7 @@ public class PouleDeFeu : Projectile
     void Start()
     {
         Invoke("Destroy", usedCard.dispersion);
-        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[2]);
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[2], 0.3f);
     }
 
     void Update()

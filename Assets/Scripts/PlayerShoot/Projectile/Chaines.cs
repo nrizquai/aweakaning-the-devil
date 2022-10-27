@@ -8,7 +8,7 @@ public class Chaines : Projectile
     void Start()
     {
         Invoke("Destroy", usedCard.dispersion);
-        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[4]);
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[4], 0.3f);
     }
 
     // Update is called once per frame

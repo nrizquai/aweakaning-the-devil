@@ -7,7 +7,7 @@ public class Bille200 : Projectile
     void Start()
     {
         Invoke("Destroy", usedCard.dispersion);
-        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[3]);
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[3], 0.3f);
     }
 
     void Update()

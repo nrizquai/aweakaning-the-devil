@@ -124,8 +124,9 @@ public class PlayerShoot : MonoBehaviour
 
     public void Bille200(GameObject origine, int indexTimer)
     {
-        GameObject bille = Instantiate(projectils[0], origine.transform.position, origine.transform.rotation);
-        bille.GetComponent<Rigidbody2D>().AddRelativeForce(playerControl.GetDirectionShoot() * bille.GetComponent<Bille200>().GetProjSpeed(), ForceMode2D.Impulse);
+        Quaternion rotation = Quaternion.Euler(0, 0, playerControl.GetShootRotation());
+        GameObject bille = Instantiate(projectils[0], origine.transform.position, rotation);
+        bille.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * bille.GetComponent<Bille200>().GetProjSpeed(), ForceMode2D.Impulse);
 
         ammo[indexTimer]--;
         timer[indexTimer] = timerMax[indexTimer];
@@ -141,13 +142,13 @@ public class PlayerShoot : MonoBehaviour
     }
     public void Pompe(GameObject origine, int indexTimer)
     {
+        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[5], 0.1f);
         Quaternion rotation = Quaternion.Euler(0, 0, playerControl.GetShootRotation());
         Quaternion rotation1 = Quaternion.Euler(0, 0, playerControl.GetShootRotation() + 45);
         Quaternion rotation2 = Quaternion.Euler(0, 0, playerControl.GetShootRotation() - 45);
         GameObject pompe = Instantiate(projectils[2], origine.transform.position, rotation);
         GameObject pompe2 = Instantiate(projectils[2], origine.transform.position, rotation1);
         GameObject pompe3 = Instantiate(projectils[2], origine.transform.position, rotation2);
-        AudioManager.instance.sfxSource[2].PlayOneShot(AudioManager.instance.sfx[5]);
         pompe.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
         pompe2.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);
         pompe3.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.up * pompe.GetComponent<Pompe>().GetProjSpeed(), ForceMode2D.Impulse);

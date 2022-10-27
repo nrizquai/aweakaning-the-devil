@@ -67,7 +67,7 @@ public class Projectile : MonoBehaviour
         if (index > 0)
         {
             index--;
-            AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[6]);
+            AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[6], 0.3f);
             usedCard = cardsList[index];
             return index;
         }

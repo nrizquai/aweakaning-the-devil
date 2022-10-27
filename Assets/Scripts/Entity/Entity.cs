@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
         pv -= damage;
         if(timerSFX <= 0) 
         {
-            AudioManager.instance.sfxSource[indexSource].PlayOneShot(AudioManager.instance.sfx[indexSFX]);
+            AudioManager.instance.sfxSource[indexSource].PlayOneShot(AudioManager.instance.sfx[indexSFX], 0.2f);
             timerSFX = timerMaxSFX;
         }
     }
