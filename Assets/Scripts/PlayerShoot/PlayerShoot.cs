@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
     PlayerController inputs = null;
     GameObject shootOrigine;
     PControl playerControl;
+    Animator anim;
 
     [SerializeField] float[] timer;
     [SerializeField] float[] timerMax;
@@ -38,6 +39,7 @@ public class PlayerShoot : MonoBehaviour
     {
         shootOrigine = GameObject.FindGameObjectWithTag("OrigineShoot");
         playerControl = GetComponent<PControl>();
+        anim = this.GetComponent<Animator>();
         SetupGame();
     }
 
@@ -92,6 +94,12 @@ public class PlayerShoot : MonoBehaviour
                 Invoke("ReloadY", cdMax[3]);
                 reloading[3] = true;
             }
+
+        inputs.movement.A.canceled += ctx => anim.SetBool("isShooting", false);
+        inputs.movement.B.canceled += ctx => anim.SetBool("isShooting", false);
+        inputs.movement.X.canceled += ctx => anim.SetBool("isShooting", false);
+        inputs.movement.Y.canceled += ctx => anim.SetBool("isShooting", false);
+
     }
 
     public void Shoot(int index, int indexTimer)
@@ -111,6 +119,7 @@ public class PlayerShoot : MonoBehaviour
                 Chaines(shootOrigine, indexTimer);
                 break;
         }
+        anim.SetBool("isShooting", true);
     }
 
     public void Bille200(GameObject origine, int indexTimer)
