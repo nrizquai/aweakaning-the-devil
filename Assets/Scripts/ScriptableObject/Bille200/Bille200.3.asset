@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1508ef453ae8844b90096228e0fc65e, type: 3}
   m_Name: Bille200.3
   m_EditorClassIdentifier: 
-  cooldown: 2
-  ammo: 30
+  cooldown: 3
+  ammo: 20
   speed: 10
-  damage: 2
+  damage: 3
   atkSpeed: 0.2
   dispersion: 5

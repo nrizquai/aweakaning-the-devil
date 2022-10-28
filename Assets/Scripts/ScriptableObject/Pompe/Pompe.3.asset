@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1508ef453ae8844b90096228e0fc65e, type: 3}
   m_Name: Pompe.3
   m_EditorClassIdentifier: 
-  cooldown: 3
-  ammo: 20
+  cooldown: 4
+  ammo: 12
   speed: 10
   damage: 4
-  atkSpeed: 0.2
-  dispersion: 0.5
+  atkSpeed: 0.4
+  dispersion: 0.25

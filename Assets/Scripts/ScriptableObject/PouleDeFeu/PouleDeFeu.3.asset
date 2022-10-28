@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1508ef453ae8844b90096228e0fc65e, type: 3}
   m_Name: PouleDeFeu.3
   m_EditorClassIdentifier: 
-  cooldown: 3
+  cooldown: 4
   ammo: 15
-  speed: 7
+  speed: 5
   damage: 7
   atkSpeed: 0.3
   dispersion: 3

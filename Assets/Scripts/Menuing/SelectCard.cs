@@ -38,13 +38,6 @@ public class SelectCard : MonoBehaviour
         inputs.Disable();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -130,6 +123,7 @@ public class SelectCard : MonoBehaviour
             if (x < 1)
             {
                 x++;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 gameObject.transform.position = cardSlot[x].transform.position;
                 timer = timerMax;
             }
@@ -137,6 +131,7 @@ public class SelectCard : MonoBehaviour
             if (x > 0)
             {
                 x--;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 gameObject.transform.position = cardSlot[x].transform.position;
                 timer = timerMax;
             }
@@ -149,6 +144,7 @@ public class SelectCard : MonoBehaviour
             if (y < 0 && y == -1)
             {
                 y++;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 cardSlot = firstLine;
                 gameObject.transform.position = cardSlot[x].transform.position;
                 timer = timerMax;
@@ -157,6 +153,7 @@ public class SelectCard : MonoBehaviour
             if (y < -1)
             {
                 y++;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 GameManager.instance.DesactivateUI();
                 onSelect = true;
@@ -169,6 +166,7 @@ public class SelectCard : MonoBehaviour
             if (y == -1 && y > -2)
             {
                 y--;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GameManager.instance.ActivateUI();
                 onSelect = false;
@@ -178,6 +176,7 @@ public class SelectCard : MonoBehaviour
             if (y > -1)
             {
                 y--;
+                AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[7], 0.1f);
                 cardSlot = secondLine;
                 gameObject.transform.position = cardSlot[x].transform.position;
                 timer = timerMax;
@@ -187,6 +186,7 @@ public class SelectCard : MonoBehaviour
 
     public void CardA(int index)
     {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[8], 0.1f);
         GameManager.instance.indexA = index;
         GameObject oldPos = GameObject.FindGameObjectWithTag("A");
         Destroy(oldPos);
@@ -216,6 +216,7 @@ public class SelectCard : MonoBehaviour
     }
     public void CardB(int index)
     {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[8], 0.1f);
         GameManager.instance.indexB = index;
         GameObject oldPos = GameObject.FindGameObjectWithTag("B");
         Destroy(oldPos);
@@ -245,6 +246,7 @@ public class SelectCard : MonoBehaviour
     }
     public void CardX(int index)
     {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[8], 0.1f);
         GameManager.instance.indexX = index;
         GameObject oldPos = GameObject.FindGameObjectWithTag("X");
         Destroy(oldPos);
@@ -274,6 +276,7 @@ public class SelectCard : MonoBehaviour
     }
     public void CardY(int index)
     {
+        AudioManager.instance.sfxSource[3].PlayOneShot(AudioManager.instance.sfx[8], 0.1f);
         GameManager.instance.indexY = index;
         GameObject oldPos = GameObject.FindGameObjectWithTag("Y");
         Destroy(oldPos);

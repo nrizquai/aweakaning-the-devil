@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1508ef453ae8844b90096228e0fc65e, type: 3}
   m_Name: Chaines.3
   m_EditorClassIdentifier: 
-  cooldown: 2.5
-  ammo: 30
+  cooldown: 3.5
+  ammo: 20
   speed: 0
   damage: 4
   atkSpeed: 0.3

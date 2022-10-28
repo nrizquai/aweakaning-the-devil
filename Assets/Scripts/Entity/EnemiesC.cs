@@ -50,4 +50,12 @@ public class EnemiesC : Vaticanais
         ball2.GetComponent<Pompe>().SetBool(true);
         cooldown = maxCooldown;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, gameObject.GetComponent<BoxCollider2D>());
+        }
+    }
 }

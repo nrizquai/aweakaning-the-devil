@@ -260,8 +260,11 @@ public class GameManager : MonoBehaviour
         EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         pauseMenu.SetActive(false);
         winLoseCanvas.SetActive(false);
+        youWin.SetActive(false);
+        gameover.SetActive(false);
         returnButton.SetActive(true);
         startButtonSelect.SetActive(true);
+        ResetIndexCard();
         EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene(1);
         mobKill = 0;
@@ -274,6 +277,8 @@ public class GameManager : MonoBehaviour
         EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelection>().DeselectButton();
         pauseMenu.SetActive(false);
         winLoseCanvas.SetActive(false);
+        youWin.SetActive(false);
+        gameover.SetActive(false);
         mainMenu.SetActive(true);
         ResetIndexCard();
         EventSystem.current.SetSelectedGameObject(null);
